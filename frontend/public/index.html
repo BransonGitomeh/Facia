@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <!--
+      Notice the use of %PUBLIC_URL% in the tag above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <title>React App</title>
+
+  <!--begin::Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+
+  <!--end::Fonts -->
+
+  <!--begin::Page Vendors Styles(used by this page) -->
+  <link href="%PUBLIC_URL%/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet"
+    type="text/css" />
+
+  <!--end::Page Vendors Styles -->
+
+  <!--begin::Global Theme Styles(used by all pages) -->
+  <link href="%PUBLIC_URL%/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="%PUBLIC_URL%/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+
+  <!--end::Global Theme Styles -->
+
+  <!--begin::Layout Skins(used by all pages) -->
+  <link href="%PUBLIC_URL%/assets/css/skins/aside/brand.css" rel="stylesheet" type="text/css" />
+
+  <!--end::Layout Skins -->
+  <link rel="shortcut icon" href="%PUBLIC_URL%/assets/media/logos/favicon.ico" />
+
+  <style>
+    .video-container {
+      position: relative;
+    }
+
+    video {
+      height: auto;
+      vertical-align: middle;
+      width: 100%;
+    }
+
+    .overlay-desc {
+      background: rgba(0, 0, 0, 0);
+      position: absolute;
+      flex-direction: column;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start`.
+      To create a production bundle, use `npm run build`.
+    -->
+
+  <!-- end::Global Config -->
+
+  <!--begin::Global Theme Bundle(used by all pages) -->
+  <script src="%PUBLIC_URL%/assets/plugins/global/plugins.bundle.js" type="text/javascript"></script>
+  <script src="%PUBLIC_URL%/assets/js/scripts.bundle.js" type="text/javascript"></script>
+
+  <!--end::Global Theme Bundle -->
+
+  <!--begin::Page Vendors(used by this page) -->
+  <!-- <script src="%PUBLIC_URL%/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script> -->
+
+  <!--end::Page Vendors -->
+  <!-- begin::Global Config(global config for global JS sciprts) -->
+  <script>
+    var KTAppOptions = {
+      "colors": {
+        "state": {
+          "brand": "#5578eb",
+          "metal": "#c4c5d6",
+          "light": "#ffffff",
+          "accent": "#00c5dc",
+          "primary": "#5867dd",
+          "success": "#34bfa3",
+          "info": "#36a3f7",
+          "warning": "#ffb822",
+          "danger": "#fd3995",
+          "focus": "#9816f4"
+        },
+        "base": {
+          "label": [
+            "#c5cbe3",
+            "#a1a8c3",
+            "#3d4465",
+            "#3e4466"
+          ],
+          "shape": [
+            "#f0f3ff",
+            "#d9dffa",
+            "#afb4d4",
+            "#646c9a"
+          ]
+        }
+      }
+    };
+  </script>
+
+  <!--begin::Page Vendors(used by this page) -->
+  <script src="%PUBLIC_URL%/assets/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+  <!--end::Page Vendors -->
+
+  <!--begin::Page Scripts(used by this page) -->
+  <script src="%PUBLIC_URL%/assets/js/pages/dashboard.js" type="text/javascript"></script>
+
+  <!--end::Page Scripts -->
+  <script src="%PUBLIC_URL%/assets/js/pages/components/datatables/basic/basic.js" type="text/javascript"></script>
+
+  <!--begin::Page Scripts(used by this page) -->
+  <script src="%PUBLIC_URL%/assets/js/pages/components/extended/toastr.js" type="text/javascript"></script>
+</body>
+
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<!--
+Theme: Keen - The Ultimate Bootstrap Admin Theme
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+License: You must have a valid license purchased only from https://themes.getbootstrap.com/product/keen-the-ultimate-bootstrap-admin-theme/ in order to legally use the theme for your project.
+-->
+<html lang="en">
+
+<!-- begin::Head -->
+
+<head>
+	<base href="">
+	<meta charset="utf-8" />
+	<title>Keen | Dashboard</title>
+	<meta name="description" content="Latest updates and statistic charts">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<!--begin::Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+
+	<!--end::Fonts -->
+
+	<!--begin::Page Vendors Styles(used by this page) -->
+	<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+
+	<!--end::Page Vendors Styles -->
+
+	<!--begin::Global Theme Styles(used by all pages) -->
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+
+	<!--end::Global Theme Styles -->
+
+	<!--begin::Layout Skins(used by all pages) -->
+	<link href="assets/css/skins/aside/brand.css" rel="stylesheet" type="text/css" />
+
+	<!--end::Layout Skins -->
+	<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+
+	<style>
+		.video-container {
+			position: relative;
+		}
+
+		video {
+			height: auto;
+			vertical-align: middle;
+			width: 100%;
+		}
+
+		.overlay-desc {
+			background: rgba(0, 0, 0, 0);
+			position: absolute;
+			flex-direction: column;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	</style>
+</head>
+
+<!-- end::Head -->
+
+<!-- begin::Body -->
+
+<body
+	class="kt-quick-panel--right kt-offcanvas-panel--right kt-header--static kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent">
+
+	<!-- begin::Page loader -->
+
+	<!-- end::Page Loader -->
+
+	<!-- begin:: Page -->
+
+	<!-- begin:: Header Mobile -->
+	<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
+		<div class="kt-header-mobile__logo">
+			<a href="index.html">
+				<img alt="Logo" src="assets/media/logos/logo-1.png" />
+			</a>
+		</div>
+		<div class="kt-header-mobile__toolbar">
+			<button class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left"
+				id="kt_aside_mobile_toggler"><span></span></button>
+			<button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i
+					class="flaticon-more"></i></button>
+		</div>
+	</div>
+
+	<!-- end:: Header Mobile -->
+	<div class="kt-grid kt-grid--hor kt-grid--root">
+		<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+
+			<!-- begin:: Aside -->
+
+
+			<!-- end:: Aside -->
+			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper">
+
+				<!-- end:: Header -->
+				<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+					<!-- begin:: Subheader -->
+					<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+						<div class="kt-container  kt-container--fluid ">
+							<div class="kt-subheader__main">
+								<h3 class="kt-subheader__title">Dashboard</h3>
+								<span class="kt-subheader__separator kt-hidden"></span>
+								<div class="kt-subheader__breadcrumbs">
+									<a href="#" class="kt-subheader__breadcrumbs-home"><i
+											class="flaticon2-shelter"></i></a>
+									<span class="kt-subheader__breadcrumbs-separator"></span>
+									<a href="" class="kt-subheader__breadcrumbs-link">
+										Dashboards </a>
+									<span class="kt-subheader__breadcrumbs-separator"></span>
+									<a href="" class="kt-subheader__breadcrumbs-link">
+										Brand Aside </a>
+
+									<!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+								</div>
+							</div>
+							<div class="kt-subheader__toolbar">
+								<div class="kt-subheader__wrapper">
+									<a href="#" class="btn btn-icon btn btn-label btn-label-brand btn-bold"
+										data-toggle="kt-tooltip" title="Reports" data-placement="top"><i
+											class="flaticon2-writing"></i></a>
+									<a href="#" class="btn btn-icon btn btn-label btn-label-brand btn-bold"
+										data-toggle="kt-tooltip" title="Calendar" data-placement="top"><i
+											class="flaticon2-hourglass-1"></i></a>
+									<div class="dropdown dropdown-inline" data-toggle="kt-tooltip" title="Quick actions"
+										data-placement="top">
+										<a href="#" class="btn btn-icon btn btn-label btn-label-brand btn-bold"
+											data-toggle="dropdown" data-offset="0px,0px" aria-haspopup="true"
+											aria-expanded="false">
+											<i class="flaticon2-add-1"></i>
+										</a>
+										<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+											<ul class="kt-nav kt-nav--active-bg" role="tablist">
+												<li class="kt-nav__item">
+													<a href="" class="kt-nav__link">
+														<i class="kt-nav__link-icon flaticon2-psd"></i>
+														<span class="kt-nav__link-text">Document</span>
+													</a>
+												</li>
+												<li class="kt-nav__item">
+													<a class="kt-nav__link" role="tab">
+														<i class="kt-nav__link-icon flaticon2-supermarket"></i>
+														<span class="kt-nav__link-text">Message</span>
+													</a>
+												</li>
+												<li class="kt-nav__item">
+													<a href="" class="kt-nav__link">
+														<i class="kt-nav__link-icon flaticon2-shopping-cart"></i>
+														<span class="kt-nav__link-text">Product</span>
+													</a>
+												</li>
+												<li class="kt-nav__item">
+													<a class="kt-nav__link" role="tab">
+														<i class="kt-nav__link-icon flaticon2-chart2"></i>
+														<span class="kt-nav__link-text">Report</span>
+														<span class="kt-nav__link-badge">
+															<span
+																class="kt-badge kt-badge--danger kt-badge--inline kt-badge--rounded">pdf</span>
+														</span>
+													</a>
+												</li>
+												<li class="kt-nav__item">
+													<a href="" class="kt-nav__link">
+														<i class="kt-nav__link-icon flaticon2-sms"></i>
+														<span class="kt-nav__link-text">Post</span>
+													</a>
+												</li>
+												<li class="kt-nav__item">
+													<a href="" class="kt-nav__link">
+														<i class="kt-nav__link-icon flaticon2-avatar"></i>
+														<span class="kt-nav__link-text">Customer</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="dropdown dropdown-inline" data-toggle="kt-tooltip" title="Quick actions"
+										data-placement="top">
+										<a href="#" class="btn btn btn-label btn-label-brand btn-bold"
+											data-toggle="dropdown" data-offset="0 0" aria-haspopup="true"
+											aria-expanded="false">
+											Reports
+										</a>
+										<div class="dropdown-menu dropdown-menu-right">
+											<ul class="kt-nav kt-nav--active-bg" id="kt_nav_1" role="tablist">
+												<li class="kt-nav__item">
+													<a href="" class="kt-nav__link">
+														<i class="kt-nav__link-icon flaticon2-psd"></i>
+														<span class="kt-nav__link-text">Products</span>
+													</a>
+												</li>
+												<li class="kt-nav__item">
+													<a class="kt-nav__link" role="tab" id="kt_nav_link_1">
+														<i class="kt-nav__link-icon flaticon2-supermarket"></i>
+														<span class="kt-nav__link-text">Customers</span>
+														<span class="kt-nav__link-badge">
+															<span
+																class="kt-badge kt-badge--success kt-badge--inline kt-badge--rounded">6</span>
+														</span>
+													</a>
+												</li>
+												<li class="kt-nav__item">
+													<a href="" class="kt-nav__link">
+														<i class="kt-nav__link-icon flaticon2-shopping-cart"></i>
+														<span class="kt-nav__link-text">Orders</span>
+													</a>
+												</li>
+												<li class="kt-nav__item">
+													<a href="" class="kt-nav__link">
+														<i class="kt-nav__link-icon flaticon2-shopping-cart"></i>
+														<span class="kt-nav__link-text">Reports</span>
+													</a>
+												</li>
+												<li class="kt-nav__item">
+													<a class="kt-nav__link" role="tab" id="kt_nav_link_2">
+														<i class="kt-nav__link-icon flaticon2-chart2"></i>
+														<span class="kt-nav__link-text">Console</span>
+														<span class="kt-nav__link-badge">
+															<span
+																class="kt-badge kt-badge--danger kt-badge--inline kt-badge--rounded">new</span>
+														</span>
+													</a>
+												</li>
+												<li class="kt-nav__item">
+													<a href="" class="kt-nav__link">
+														<i class="kt-nav__link-icon flaticon2-sms"></i>
+														<span class="kt-nav__link-text">Settings</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- end:: Subheader -->
+
+					<!-- begin:: Content -->
+					<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+
+						<!--begin::Dashboard 6-->
+
+						<!--begin::Row-->
+						<div class="row">
+
+							<div class="col-lg-6 col-xl-9 order-lg-2 order-xl-1">
+
+								<!--begin::Portlet-->
+								<!-- <div class="kt-portlet kt-portlet--height-fluid">
+
+									<div class="kt-portlet__body" style="padding: 0px;">
+										<div class="kt-widget-1">
+
+											<div class="tab-content">
+												<div class="tab-pane fade active show" id="kt_tabs_19_15dffc61276a56"
+													role="tabpanel">
+
+													
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div> -->
+								<!--end::Portlet-->
+
+
+								<div class="embed-responsive embed-responsive-16by9 video-container">
+									<video class="embed-responsive-item" autoplay></video>
+									<div class="overlay-desc">
+										<img style="position: absolute; padding-bottom: 0px; max-width:40%; max-height: 40%; height:auto;" src="cool2.gif" alt=""/>
+									</div>
+								</div>
+
+
+								<script>
+									const constraints = {
+										video: { width: { min: 1280 }, height: { min: 720 } }
+									};
+
+									const video = document.querySelector('video');
+
+									navigator.mediaDevices.getUserMedia(constraints).
+										then((stream) => { video.srcObject = stream });
+								</script>
+							</div>
+							<div class="col-lg-12 col-xl-3 order-lg-3 order-xl-1">
+
+								<!--begin::Portlet-->
+								<div class="kt-portlet kt-portlet--height-fluid kt-widget-17">
+
+									<div class="kt-portlet__body">
+										<div class="kt-widget-17">
+											<div class="kt-widget-17__item">
+												<div class="kt-widget-17__product">
+													<div class="kt-widget-17__thumb">
+														<a href="#"><img src="assets/media/blog/7.jpg"
+																class="kt-widget-17__image" alt="" title=""></a>
+													</div>
+													<div class="kt-widget-17__product-desc">
+														<a href="#">
+															<div class="kt-widget-17__title">
+																James Njegi
+															</div>
+														</a>
+														<div class="kt-widget-17__sku">
+															Last seen: 12:30am
+														</div>
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+								<!--end::Portlet-->
+							</div>
+
+
+
+
+
+						</div>
+
+						<!--end::Row-->
+
+						<!--end::Dashboard 6-->
+					</div>
+
+					<!-- end:: Content -->
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+	<!-- end:: Page -->
+
+
+	<!-- begin:: Scrolltop -->
+	<div id="kt_scrolltop" class="kt-scrolltop">
+		<i class="la la-arrow-up"></i>
+	</div>
+
+	<!-- end:: Scrolltop -->
+
+	<!-- begin::Global Config(global config for global JS sciprts) -->
+	<script>
+		var KTAppOptions = {
+			"colors": {
+				"state": {
+					"brand": "#5578eb",
+					"metal": "#c4c5d6",
+					"light": "#ffffff",
+					"accent": "#00c5dc",
+					"primary": "#5867dd",
+					"success": "#34bfa3",
+					"info": "#36a3f7",
+					"warning": "#ffb822",
+					"danger": "#fd3995",
+					"focus": "#9816f4"
+				},
+				"base": {
+					"label": [
+						"#c5cbe3",
+						"#a1a8c3",
+						"#3d4465",
+						"#3e4466"
+					],
+					"shape": [
+						"#f0f3ff",
+						"#d9dffa",
+						"#afb4d4",
+						"#646c9a"
+					]
+				}
+			}
+		};
+	</script>
+
+	<!-- end::Global Config -->
+
+	<!--begin::Global Theme Bundle(used by all pages) -->
+	<script src="assets/plugins/global/plugins.bundle.js" type="text/javascript"></script>
+	<script src="assets/js/scripts.bundle.js" type="text/javascript"></script>
+
+	<!--end::Global Theme Bundle -->
+
+	<!--begin::Page Vendors(used by this page) -->
+	<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
+
+	<!--end::Page Vendors -->
+
+	<!--begin::Page Scripts(used by this page) -->
+	<script src="assets/js/pages/dashboard.js" type="text/javascript"></script>
+
+	<!--end::Page Scripts -->
+</body>
+
+<!-- end::Body -->
+
+</html>

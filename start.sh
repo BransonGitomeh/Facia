@@ -1,0 +1,1 @@
+docker-compose -f infrastructure.yml up & docker-compose -f app.yml up
