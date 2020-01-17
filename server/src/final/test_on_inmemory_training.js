@@ -5,7 +5,7 @@ const data_preparation = require("./utils/data-prep")
 const train_recorgnisers = require("./utils/train-recorgnisers")
 const run_predictions = require('./utils/recorgnisers')
 
-const { nameMappings } = require("../data/POC/imgs/labels.json")
+const { nameMappings } = require(`${process.cwd()}/data/imgs/labels.json`)
 
 const main = async () => {
     // --------------------------- MACHINES LEARNING, BEWARE ---------------------------------------------

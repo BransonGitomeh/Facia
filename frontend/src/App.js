@@ -59,6 +59,9 @@ export default class App extends Component {
     connected: true
   }
   componentDidMount() {
+    console.warn("Mounting main route")
+    console.log(this.props)
+
     this.state.socket.on('disconnect', () => {
       console.warn("Client disconnected from the main server")
       this.setState({
@@ -111,11 +114,12 @@ export default class App extends Component {
 
         {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
+
         <Switch>
-          <Route path="/register">
+          <Route path="/register/:id" component={(props) => <div>
             <Navbar clients={this.state.clients} connected={this.state.connected} />
-            <Register socket={this.state.socket} connected={this.state.connected} />
-          </Route>
+            <Register socket={this.state.socket} connected={this.state.connected} {...props} />
+          </div>} />
           <Route path="/live">
             <Navbar clients={this.state.clients} connected={this.state.connected} />
             <Live socket={this.state.socket} connected={this.state.connected} />
@@ -123,7 +127,7 @@ export default class App extends Component {
           <Route path="/management">
             <Management clients={this.state.clients} socket={this.state.socket} connected={this.state.connected} >
               <Switch>
-                <Route path="/management/employees/add" component={() => <AddEmployees clients={this.state.clients} connected={this.state.connected} />} />
+                <Route path="/management/employees/add" component={(props) => <AddEmployees {...props} clients={this.state.clients} connected={this.state.connected} />} />
                 <Route path="/management/employees/edit/:user_id" component={EditEmployees} />
                 <Route path="/management/employees" component={DataTable} />
               </Switch>
@@ -135,7 +139,7 @@ export default class App extends Component {
             <p>Proceed to test the model to see if it recorgnises you https://f10bc7c2.ngrok.io</p>
           </Route>
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter >
     );
   }
 }

@@ -20,12 +20,10 @@ const saveFace = (face, name) => new Promise(async (resolve, reject) => {
     }
 })
 
-
 const prepareData = ({
     nameMappings = []
 }) => new Promise((resolve, reject) => {
-    const imagesBasePath = "./data/POC/imgs"
-    const facesBasePath = "./data/POC/faces"
+    const imagesBasePath = `${process.cwd()}/data/imgs`
 
     var globalLabels = []
     var globalTrainingImages = []
@@ -33,9 +31,8 @@ const prepareData = ({
     for (var n of nameMappings) {
             
         const imgsPath = path.resolve(imagesBasePath, n);
-        console.log('Training models with', n ,imgsPath)
+
         const imgFiles = fs.readdirSync(imgsPath);
-        const detectedImagesPath = path.resolve(facesBasePath, n);
 
         try {
             const images = imgFiles
@@ -47,29 +44,19 @@ const prepareData = ({
 
             images.map((face, i) => saveFace(face, nameMappings[i]))
 
-            const isImageFour = (_, i) => imgFiles[i].includes('9');
-            const isNotImageFour = (_, i) => !isImageFour(_, i);
-            // use images 1 - 3 for training
-            //let trainImages = images.filter(isNotImageFour);
-            // use images 4 for testing
-            // const testImages = images.filter(isImageFour);
             // make labels
             const labels = imgFiles
-                // .filter(isNotImageFour)
                 .map(file => nameMappings.findIndex(name => n.includes(name)));
 
-            // console.log({ labels })
             globalLabels = [...globalLabels, ...labels]
             globalTrainingImages = [...globalTrainingImages, ...images]
         } catch (err) {
-            console.log(err.message)
+            reject(err)
         }
     }
 
-    // console.log(globalTrainingImages)
     resolve([
         globalTrainingImages,
-        // testImages,
         globalLabels
     ])
 })

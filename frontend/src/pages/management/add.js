@@ -62,6 +62,9 @@ export default class AddEmployees extends Component {
     };
 
     toastr.success("Employee has been saved!");
+    setTimeout(() => {
+      this.props.history.goBack()
+    }, 200);
     this.setState({ saving: true })
   }
   sendImageForProcessing(image) {
@@ -147,7 +150,7 @@ export default class AddEmployees extends Component {
           <div className="kt-portlet">
             <div className="kt-portlet__head">
               <div className="kt-portlet__head-label">
-                <h3 className="kt-portlet__head-title">Edit employee details</h3>
+                <h3 className="kt-portlet__head-title">Add employee</h3>
               </div>
             </div>
             {/*begin::Form*/}
@@ -193,7 +196,7 @@ export default class AddEmployees extends Component {
                   </div> */}
                 </div>
 
-               
+
 
               </div>
 

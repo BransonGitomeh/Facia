@@ -18,7 +18,7 @@ const getFaceImage = (grayImg) => {
 
 const prepareSingleImage = (user,name) => new Promise(async (resolve, reject) => {
     try {
-        const imgMat = cv.imread(`./data/POC/imgs/${user}/${name}.jpg`)
+        const imgMat = cv.imread(`${process.cwd()}/data/imgs/${user}/${name}.jpg`)
         const imgBgrToGray = imgMat.bgrToGray()
         const faceImgs = getFaceImage(imgBgrToGray)
         resolve(faceImgs)

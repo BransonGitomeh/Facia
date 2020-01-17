@@ -82,7 +82,7 @@ export default class Register extends Component {
                         </thead>
                         <tbody>
                             {this.state.employees.map(employee => {
-                                const { names, number, department } = employee
+                                const { _id, names, number, department } = employee
                                 return <tr>
                                     <td>{number}</td>
                                     <td>{names}</td>
@@ -95,14 +95,20 @@ export default class Register extends Component {
                                         >
                                             <i className="la la-edit" />
                                         </Link>
-                                        <a
-                                            to="#"
+                                        <button
                                             onClick={() => this.deleteEmployee(employee)}
                                             className="btn btn-sm btn-clean btn-icon btn-icon-md"
                                             title="View"
                                         >
                                             <i className="la la-trash" />
-                                        </a>
+                                        </button>
+                                        <Link
+                                            to={`/register/${number}`}
+                                            className="btn btn-sm btn-info"
+                                            title="View"
+                                        >
+                                            Facial Registration
+                                        </Link>
                                     </div>
                                     </td>
                                 </tr>

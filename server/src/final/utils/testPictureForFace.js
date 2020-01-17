@@ -16,10 +16,10 @@ const getFaceImage = (grayImg) => {
 
 const checkForFace = (name, index) => new Promise(async (resolve, reject) => {
     try {
-        const imgMat = cv.imread(`data/POC/imgs/${name}/${index}.jpg`)
+        const imgMat = cv.imread(`${process.cwd()}/data/imgs/${name}/${index}.jpg`)
         const imgBgrToGray = imgMat.bgrToGray()
         const face = getFaceImage(imgBgrToGray)
-        cv.imwrite(`data/POC/faces/${name}/${index}.jpg`, face);
+        cv.imwrite(`${process.cwd()}/data/faces/${name}/${index}.jpg`, face);
         resolve()
     } catch (error) {
         reject(error.message)
@@ -31,17 +31,16 @@ const verifyTrashImage = (name) => new Promise(async (resolve, reject) => {
         const imgMat = cv.imread(`./data/POC/trash/${name}.jpg`)
         const imgBgrToGray = imgMat.bgrToGray()
         const face = getFaceImage(imgBgrToGray)
-        cv.imwrite(`./data/POC/trash/${name}_face.jpg`, face);
+        cv.imwrite(`${process.cwd()}/data/trash/${name}_face.jpg`, face);
         resolve()
     } catch (error) {
         reject(error.message)
     }
 })
 
-const imagesBasePath = "../src/data/POC/imgs"
+const imagesBasePath = `${process.cwd()}/data/imgs`
 
 const verifyBase64Image = (image, label = "new", thumbCb) => new Promise(async (resolve, reject) => {
-    console.log("verifying base64 image")
     if (!image) {
         return reject(new Error('Please provide an image'))
     }
@@ -59,11 +58,9 @@ const verifyBase64Image = (image, label = "new", thumbCb) => new Promise(async (
         // send face to the frontend
         thumbCb(cv.imencode('.jpg', face).toString('base64'))
 
-        // var dir = `./src/data/POC/imgs/${label}`;
+        var dir = path.resolve(imagesBasePath, label);
 
-        const dir = path.resolve(imagesBasePath, label);
-
-        if (!fs.existsSync(dir)) {
+        if (!fs.existsSync(dir)){
             fs.mkdirSync(dir);
         }
 

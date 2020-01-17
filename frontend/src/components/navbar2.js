@@ -111,7 +111,7 @@ export default (props) => {
                         <div className="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
                             <div
                                 className="kt-head"
-                                style={{ backgroundImage: "url(assets/media/misc/head_bg_sm.jpg)" }}
+                                style={{ backgroundImage: "url(./assets/media/misc/head_bg_sm.jpg)" }}
                             >
                                 <h3 className="kt-head__title">Quick Actions</h3>
                             </div>
@@ -123,13 +123,6 @@ export default (props) => {
                                     <div className="kt-grid-nav__item-title"> Live view</div>
                                     <div className="kt-grid-nav__item-desc">Identifying and Actions</div>
                                 </Link>
-                                <Link className="kt-grid-nav__item" to="/register">
-                                    <div className="kt-grid-nav__item-icon">
-                                        <i className="flaticon-plus" />
-                                    </div>
-                                    <div className="kt-grid-nav__item-title"> Registration</div>
-                                    <div className="kt-grid-nav__item-desc">Add People</div>
-                                </Link>
                                 <Link className="kt-grid-nav__item" to="/management/employees">
                                     <div className="kt-grid-nav__item-icon">
                                         <i className="flaticon-computer" />
@@ -137,13 +130,13 @@ export default (props) => {
                                     <div className="kt-grid-nav__item-title"> Management</div>
                                     <div className="kt-grid-nav__item-desc">Reports and Analysis</div>
                                 </Link>
-                                <Link className="kt-grid-nav__item" to="/management/settings">
+                                {/* <Link className="kt-grid-nav__item" to="/management/settings">
                                     <div className="kt-grid-nav__item-icon">
                                         <i className="flaticon-settings" />
                                     </div>
                                     <div className="kt-grid-nav__item-title"> Administration</div>
                                     <div className="kt-grid-nav__item-desc">Settings and Logs</div>
-                                </Link>
+                                </Link> */}
                             </div>
                         </div>
                     </div>

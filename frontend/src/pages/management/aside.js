@@ -18,7 +18,7 @@ export default class Register extends Component {
                 {/* begin:: Aside */}
                 <div className="kt-aside__brand   kt-grid__item" id="kt_aside_brand">
                     <div className="kt-aside__brand-logo">
-                        <a href="index.html">
+                        <a href="/">
                             <img alt="Logo" src="/assets/media/logos/logo-1.png" />
                         </a>
                     </div>
