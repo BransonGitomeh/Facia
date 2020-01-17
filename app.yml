@@ -16,7 +16,7 @@ services:
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB 
     ports:
-      - "80:8080"
+      - "8082:8080"
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
@@ -30,7 +30,7 @@ services:
       context: server
       dockerfile: Dockerfile
     image: nodejs
-    container_name: nodejs
+    container_name: server
     restart: unless-stopped
     env_file: server/.env
     environment:
@@ -40,10 +40,10 @@ services:
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB 
     ports:
-      - "80:8080"
+      - "4333:4333"
     volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
+      - ./server:/home/node/app
+      - ./server/node_modules:/home/node/app/node_modules
     networks:
       - app-network
     command: yarn dev

@@ -35,9 +35,23 @@ var clients = [];
 
 const classifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_ALT2);
 
+const Hemera = require('nats-hemera')
+
+const { NATS_URL, NATS_USER, NATS_PASSWORD } = process.env
+const nats = require('nats').connect({
+    url: NATS_URL,
+    user: NATS_USER,
+    pass: NATS_PASSWORD
+})
+
+const hemera = new Hemera(nats, {
+    logLevel: 'info',
+    prettyLog: true
+})
+
 // Use connect method to connect to the server
 MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
-    console.log("Connected successfully to server");
+    hemera.log.info("Connected successfully to server");
     // Database Name
     const dbName = 'myproject';
 
@@ -60,10 +74,10 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
 
             if (alias >= 1) {
                 // this single interface has multiple ipv4 addresses
-                console.log(ifname + ':' + alias, iface.address);
+                hemera.log.info(ifname + ':' + alias, iface.address);
             } else {
                 // this interface has only one ipv4 adress
-                console.log(ifname, iface.address);
+                hemera.log.info(ifname, iface.address);
             }
             ++alias;
         });
@@ -73,9 +87,11 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
     const port = 4333;
 
     server.listen(port, hostname, () => {
-        console.log(`Server running at http://${hostname}:${port}/`);
+        hemera.log.info(`Server running at http://${hostname}:${port}/`)
     });
-    console.log("server listening on 4333")
+
+
+
     // WARNING: app.listen(80) will NOT work here!
 
     app.locals.db = db
@@ -91,7 +107,7 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
 
     app.get('/employees/:number', (req, res) => {
         employees.findOne({ number: req.params.number }, (err, data) => {
-            if (err) console.log(err)
+            if (err) hemera.log.info(err)
             res.send(data)
         })
     })
@@ -110,7 +126,7 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
             req.body
         ], function (err, result) {
             if (err)
-                console.log(err)
+                hemera.log.info(err)
 
             res.send({ id })
         })
@@ -134,19 +150,19 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
         //         res.sendFile(`${process.cwd()}/src/data/tmp/${req.params.image_id}`);
         //     }
         // } catch (err) {
-            const imgsPath = path.resolve(imagesBasePath, req.params.user_id);
-            const imageMat = cv.imread(path.resolve(imgsPath, req.params.image_id))
-            const greyImage = imageMat.bgrToGray()
-            const faceRects = classifier.detectMultiScale(greyImage).objects;
-            const face = greyImage.getRegion(faceRects[0])
-            let base64Image = cv.imencode('.jpg', face).toString('base64')
+        const imgsPath = path.resolve(imagesBasePath, req.params.user_id);
+        const imageMat = cv.imread(path.resolve(imgsPath, req.params.image_id))
+        const greyImage = imageMat.bgrToGray()
+        const faceRects = classifier.detectMultiScale(greyImage).objects;
+        const face = greyImage.getRegion(faceRects[0])
+        let base64Image = cv.imencode('.jpg', face).toString('base64')
 
-            base64Image += base64Image.replace('+', ' ');
-            const binary = new Buffer(base64Image, 'base64').toString('binary');
+        base64Image += base64Image.replace('+', ' ');
+        const binary = new Buffer(base64Image, 'base64').toString('binary');
 
-            fs.writeFile(`${process.cwd()}/src/data/tmp/${req.params.image_id}`, binary, "binary", function (err) {
-                res.sendFile(`${process.cwd()}/src/data/tmp/${req.params.image_id}`);
-            })
+        fs.writeFile(`${process.cwd()}/src/data/tmp/${req.params.image_id}`, binary, "binary", function (err) {
+            res.sendFile(`${process.cwd()}/src/data/tmp/${req.params.image_id}`);
+        })
         // }
     })
 
@@ -157,13 +173,6 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
         res.send({ images })
     })
 
-    const Hemera = require('nats-hemera')
-    const nats = require('nats').connect()
-
-    const hemera = new Hemera(nats, {
-        // logLevel: 'error',
-        // prettyLog: true
-    })
 
 
     hemera.ready(() => {
@@ -171,7 +180,7 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
         let registeringClients = {};
 
         io.on('connection', async function (socket) {
-            console.log('Client connected!')
+            hemera.log.info('Client connected!')
             socket.emit('connection');
 
             socket.join('main');
@@ -183,7 +192,7 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
 
             socket.on('auth', (data) => {
                 const id = data.id || new ObjectId().toString()
-                console.log(`Client ${id} authenticated!`)
+                hemera.log.info(`Client ${id} authenticated!`)
                 socket.metaData = { id }
                 usersAccess.insertMany([
                     data
@@ -216,7 +225,7 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
                     data
                 ], function (err, result) {
                     if (err)
-                        console.log(err)
+                        hemera.log.info(err)
                 })
             });
 
@@ -243,13 +252,13 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
                     pubsub$: true,
                     client: socket.id
                 }, (thumb) => {
-                    console.log("Sending new thumb to frontend", socket.id)
+                    hemera.log.info("Sending new thumb to frontend", socket.id)
                     // socket.emit('new-detection', {
                     //     img: 'data:image/jpeg;base64,' + thumb.image,
                     //     user: thumb.user,
                     //     confidence: thunb.confidence
                     // })
-                    // console.log(Object.keys(thumb))
+                    // hemera.log.info(Object.keys(thumb))
                     socket.emit('new-detection', {
                         user: thumb.user,
                         img: 'data:image/jpeg;base64,' + thumb.image,
@@ -278,10 +287,10 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
                             let nameMappingsData = JSON.stringify({
                                 nameMappings: [...new Set([label, ...require("../../data/POC/labels.json").nameMappings])]
                             });
-                            // console.log(nameMappingsData)
+                            // hemera.log.info(nameMappingsData)
                             fs.writeFileSync('/src/data/POC/labels.json', nameMappingsData, null, 2);
                         } catch (error) {
-                            console.log(error.message)
+                            hemera.log.info(error.message)
                         }
                     }
                 )
